@@ -4,6 +4,7 @@ Static Page (Html + CSS + Javascript) with countdown indicating that our system 
 You can set a target time for comming back, that is used to calculate the remaining time.
 If you have reached the target time but still cannot restablish your system, this page will add 01, 02, 03 hours and so on to your "target time" in order to have a positive remaing time all the time
 
+You can test it in: https://pablodonayre.github.io/page_in_maintenance/
 
 SERVER CONFIGURATION
 
@@ -32,6 +33,7 @@ NOTES FOR MY OWN
 
 After being sure that the server prepared is running successfully:
 
+    - We need to schedule a "Maintenance Event" (target datetime) in our ERP System, using the SYSADMIN role
     - The ERP system automatically:
         - Will avoid user login if we have reached the target datetime for maintenance.
         - Will logout all users when we reach the target datetime.
@@ -47,5 +49,6 @@ After being sure that the server prepared is running successfully:
         - crontab -e
         - comment execution
         
-    - Go to Digital Ocean > Manage > Networking > Reserved IPs
-    - Locate the reserved IP assigned to your droplet and reassign it to the server with the "Maintenance page"
+    - After confirming the system is avoiding general login, perform the following:
+        - Go to Digital Ocean > Manage > Networking > Reserved IPs
+        - Locate the reserved IP assigned to your droplet and reassign it to the server with the "Maintenance page"
