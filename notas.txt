@@ -1,0 +1,15 @@
+1. Ingresar a Digital Ocean
+2. Crear servidor LEMP
+3. Configuración
+    - cd /etc/nginx/sites-available/
+    - nano digitalocean
+        + agregar el dominio y el subdominio
+
+            # Make site accessible from http://localhost/
+            server_name quanticoservices.com webpos.quanticoservices.com;
+
+        + guardar
+    - systemctl restart nginx
+
+4. Actualizar plantilla
+    - cd /var/www/html
