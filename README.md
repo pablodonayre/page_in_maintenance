@@ -29,6 +29,8 @@ SERVER CONFIGURATION
 
 
 NOTES FOR MY OWN
+
 After being sure that the server prepared is running successfully:
+
     - Go to Digital Ocean > Manage > Networking > Reserved IPs
     - Locate the reserved IP assigned to your droplet and reassign it to the server with the "Maintenance page"
