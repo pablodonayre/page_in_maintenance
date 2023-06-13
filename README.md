@@ -33,6 +33,7 @@ NOTES FOR MY OWN
 
 After being sure that the server prepared is running successfully:
 
+    - We need to schedule a "Maintenance Event" (target datetime) in our ERP System, using the SYSADMIN role
     - The ERP system automatically:
         - Will avoid user login if we have reached the target datetime for maintenance.
         - Will logout all users when we reach the target datetime.
