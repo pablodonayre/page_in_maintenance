@@ -22,16 +22,16 @@
 		init(this, options);
 		
 		positions = this.find('.position');
+
+		var test;
+		var count = 0;
 		
 		(function tick(){
+			console.log('funcion tick')
 
-			var hora_objetivo = '2023-06-13T13:00:00';
+			var hora_objetivo = '2023-06-13T13:20:00';
 			var target = luxon.DateTime.fromISO(hora_objetivo);
 			var hora_actual = luxon.DateTime.now();
-
-			console.log('hora actual', hora_actual)
-			console.log('target', target)
-			console.log(hora_actual > target)
 
 			var offset = 1; // 1 hora adicional a la hora objetivo
 			var factor = 0;
@@ -39,12 +39,18 @@
 			if(hora_actual > target){
 				var diff_horas = hora_actual.diff(target, 'hours').toObject();
 				factor = Math.trunc(diff_horas.hours) + 1;
-				console.log('test', hora_actual.diff(target, 'hours').toObject());
-				console.log('factor', factor);
 			} 
 
 			var diff = (target + factor * offset * 3600 * 1000) - hora_actual;
-			console.log('diff', diff)
+
+			if(count == 0){
+				if(diff < 1000){
+					console.log('if')
+					clearTimeout(test)
+					count = 1;
+					setTimeout(reload, diff);
+				}
+			}
 
 			// Number of seconds in every time division
 			var day_base = (diff / 1000) / (3600 * 24);
@@ -59,8 +65,6 @@
 			var sec_base = (min_base - minutes) * 60
 			var seconds = Math.trunc(sec_base);
 
-			console.log('seconds', seconds)
-			
 			// Number of days left
 			d = days;
 			updateDuo(0, 1, d);
@@ -81,13 +85,17 @@
 			options.callback(d, h, m, s);
 			
 			// Scheduling another call of this function in 1s
-			setTimeout(tick, 1000);
+			test = setTimeout(tick, 1000);
 		})();
 		
 		// This function updates two digit positions at once
 		function updateDuo(minor,major,value){
 			switchDigit(positions.eq(minor),Math.floor(value/10)%10);
 			switchDigit(positions.eq(major),value%10);
+		}
+
+		function reload(){
+			window.location.reload();
 		}
 		
 		return this;
