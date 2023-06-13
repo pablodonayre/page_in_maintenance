@@ -25,7 +25,7 @@
 		
 		(function tick(){
 
-			var hora_objetivo = '2023-06-15T15:00:00';
+			var hora_objetivo = '2023-06-13T13:00:00';
 			var target = luxon.DateTime.fromISO(hora_objetivo);
 			var hora_actual = luxon.DateTime.now();
 

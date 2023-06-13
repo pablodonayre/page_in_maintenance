@@ -1,15 +1,19 @@
-1. Ingresar a Digital Ocean
-2. Crear servidor LEMP
-3. Configuración
+1. Access to Digital Ocean
+2. Create a LEMP server
+3. Nginx configuration
     - cd /etc/nginx/sites-available/
     - nano digitalocean
-        + agregar el dominio y el subdominio
+        by default digital ocean sets digitalocean file in sites-enabled, by this reason we will modify this
+        + change the root route
+            root /var/www/html/page_in_maintenance
+
+        + add domain y el subdomain
 
             # Make site accessible from http://localhost/
             server_name quanticoservices.com webpos.quanticoservices.com;
 
-        + guardar
     - systemctl restart nginx
 
-4. Actualizar plantilla
-    - cd /var/www/html
+4. Load files
+    - bash post_rsync.sh
+    - cd /var/www/html/page_in_maintenance
