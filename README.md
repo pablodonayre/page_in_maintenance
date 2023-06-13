@@ -32,5 +32,20 @@ NOTES FOR MY OWN
 
 After being sure that the server prepared is running successfully:
 
+    - The ERP system automatically:
+        - Will avoid user login if we have reached the target datetime for maintenance.
+        - Will logout all users when we reach the target datetime.
+
+    - Access to production server console and look for CRON execution. If CRON has been successfully executed and you have considerable remaining time, then continue with the next steps.
+        - cd webpos
+            - docker-compose logs -tail=1000 -t -f api_fact | grep "executing from CRON"
+            - docker-compose logs -tail=1000 -t -f erp | grep "executing from CRON"
+        - cd erp/tools
+            - tail -50 declaracion.log (to review the last CRON execution logged)
+
+    - Optionally you can stop CRON execution with the following command:
+        - crontab -e
+        - comment execution
+        
     - Go to Digital Ocean > Manage > Networking > Reserved IPs
     - Locate the reserved IP assigned to your droplet and reassign it to the server with the "Maintenance page"
