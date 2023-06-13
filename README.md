@@ -48,5 +48,6 @@ After being sure that the server prepared is running successfully:
         - crontab -e
         - comment execution
         
+    - After confirming the system is avoiding general login, perform the following:
     - Go to Digital Ocean > Manage > Networking > Reserved IPs
     - Locate the reserved IP assigned to your droplet and reassign it to the server with the "Maintenance page"
