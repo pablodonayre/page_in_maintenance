@@ -36,12 +36,12 @@
 			var offset = 1; // 1 hora adicional a la hora objetivo
 			var factor = 0;
 
-			if(hora_actual > target){
+			if(hora_actual.ts > target.ts){
 				var diff_horas = hora_actual.diff(target, 'hours').toObject();
 				factor = Math.trunc(diff_horas.hours) + 1;
 			} 
 
-			var diff = (target + factor * offset * 3600 * 1000) - hora_actual;
+			var diff = (target + factor * offset * 3600 * 1000) - hora_actual.ts;
 
 			if(count == 0){
 				if(diff < 1000){
